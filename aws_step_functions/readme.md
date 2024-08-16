@@ -12,7 +12,7 @@
   "Sugerir cardapio bebidas para festa para um grupo de quinze pessoas"
 
 3) Lugar:
-  "Sugirar lugar para festa em Florianopolis um grupo de quinze pessoas"
+  "Sugerir lugar para festa em Florianopolis um grupo de quinze pessoas"
 
 
 ### Resutados das pesquisas no bedrock modelo Amazon Titan Text
