@@ -76,7 +76,7 @@
     },
     "Sugestão Lugares": {
       "Type": "Pass",
-      "Result": "Sugerar lugar para festa em florianopolis um grupo de quinze pessoas",
+      "Result": "Sugerir lugar para festa em Florianopolis um grupo de quinze pessoas",
       "ResultPath": "$.prompt_one",
       "Next": "Lugares Cidade"
     },

@@ -12,7 +12,7 @@
   "Sugerir cardapio bebidas para festa para um grupo de quinze pessoas"
 
 3) Lugar:
-  "Sugerar lugar para festa em florianopolis um grupo de quinze pessoas"
+  "Sugirar lugar para festa em Florianopolis um grupo de quinze pessoas"
 
 
 ### Resutados das pesquisas no bedrock modelo Amazon Titan Text
@@ -41,7 +41,7 @@
 
 3)
 {
-  "prompt_one": "Sugerar lugar para festa em florianopolis um grupo de quinze pessoas",
+  "prompt_one": "Sugerir lugar para festa em Florianopolis um grupo de quinze pessoas",
   "result_one": {
     "result_one": "\nPara festas em Florianópolis, o grupo pode considerar o Bar do Moicano, que é um dos mais famosos da cidade e oferece uma atmosfera descontraída e animada. A casa é conhecida por sua música ao vivo, bebidas geladas e um ambiente festivo. \nOutra opção é o Bar do Zé, que também é bastante popular entre os jovens e oferece uma atmosfera animada com música ao vivo e bebidas em abundância. \nPara festas mais exclusivas, o grupo pode considerar o Bar do Moinho, que é um dos mais badalados da cidade e oferece uma atmosfera sofisticada e elegante. \nAlém disso, o grupo pode considerar a Praia Mole, que é uma das mais famosas de Florianópolis e oferece uma atmosfera descontraída e festiva durante o dia. \nPara festas noturnas, o grupo pode considerar o Bar do Alemão, que é um dos mais famosos da cidade e oferece uma atmosfera animada com música ao vivo e bebidas em abundância. \nÉ importante verificar a disponibilidade e reservar com antecedência, especialmente durante os fins de semana e alta temporada."
   },
