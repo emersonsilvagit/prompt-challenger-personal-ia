@@ -1,0 +1,114 @@
+{
+  "Comment": "An example of using Bedrock to chain prompts and their responses together.",
+  "StartAt": "Sugestão Cardapio",
+  "States": {
+    "Sugestão Cardapio": {
+      "Type": "Pass",
+      "Result": "Festa de formatura de faculdade, gerar cardápio de finger food para um grupo de quinze pessoas",
+      "ResultPath": "$.prompt_one",
+      "Next": "Cardapio Festa"
+    },
+    "Cardapio Festa": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "arn:aws:bedrock:sa-east-1::foundation-model/amazon.titan-text-express-v1",
+        "ContentType": "application/json",
+        "Accept": "*/*",
+        "Body": {
+          "inputText.$": "$.prompt_one",
+          "textGenerationConfig": {
+            "temperature": 0,
+            "topP": 1,
+            "maxTokenCount": 2000
+          }
+        }
+      },
+      "Next": "Guardar resultado cardapio",
+      "ResultPath": "$.result_one",
+      "ResultSelector": {
+        "result_one.$": "$.Body.results[0].outputText"
+      }
+    },
+    "Guardar resultado cardapio": {
+      "Type": "Pass",
+      "Parameters": {
+        "convo_one.$": "States.Format('{}\n{}', $.prompt_one, $.result_one.result_one)"
+      },
+      "ResultPath": "$.convo_one",
+      "Next": "Sugestão bebidas"
+    },
+    "Sugestão bebidas": {
+      "Type": "Pass",
+      "Result": "Sugerir cardapio bebidas para festa para um grupo de quinze pessoas",
+      "ResultPath": "$.prompt_one",
+      "Next": "Cardapio Bebidas"
+    },
+    "Cardapio Bebidas": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "arn:aws:bedrock:sa-east-1::foundation-model/amazon.titan-text-express-v1",
+        "ContentType": "application/json",
+        "Accept": "*/*",
+        "Body": {
+          "inputText.$": "$.prompt_one",
+          "textGenerationConfig": {
+            "temperature": 0,
+            "topP": 1,
+            "maxTokenCount": 2000
+          }
+        }
+      },
+      "ResultPath": "$.result_one",
+      "ResultSelector": {
+        "result_one.$": "$.Body.results[0].outputText"
+      },
+      "Next": "Guardar resultado bebidas"
+    },
+    "Guardar resultado bebidas": {
+      "Type": "Pass",
+      "Parameters": {
+        "convo_one.$": "States.Format('{}\n{}', $.prompt_one, $.result_one.result_one)"
+      },
+      "ResultPath": "$.convo_one",
+      "Next": "Sugestão Lugares"
+    },
+    "Sugestão Lugares": {
+      "Type": "Pass",
+      "Result": "Sugerar lugar para festa em florianopolis um grupo de quinze pessoas",
+      "ResultPath": "$.prompt_one",
+      "Next": "Lugares Cidade"
+    },
+    "Lugares Cidade": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "arn:aws:bedrock:sa-east-1::foundation-model/amazon.titan-text-express-v1",
+        "ContentType": "application/json",
+        "Accept": "*/*",
+        "Body": {
+          "inputText.$": "$.prompt_one",
+          "textGenerationConfig": {
+            "temperature": 0,
+            "topP": 1,
+            "maxTokenCount": 2000
+          }
+        }
+      },
+      "ResultPath": "$.result_one",
+      "ResultSelector": {
+        "result_one.$": "$.Body.results[0].outputText"
+      },
+      "Next": "Guardar resultado lugares"
+    },
+    "Guardar resultado lugares": {
+      "Type": "Pass",
+      "Parameters": {
+        "convo_one.$": "States.Format('{}\n{}', $.prompt_one, $.result_one.result_one)"
+      },
+      "ResultPath": "$.convo_one",
+      "End": true
+    }
+  }
+}
